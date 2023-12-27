@@ -11,7 +11,7 @@ export default class HTTPUtils {
      */
 
     static getSnomedCodeFhirFile(snomedCode) {
-        return fetch(`${process.env.SERVER_URL}/fhir/CodeSystem/$lookup?system=http://snomed.info/sct&code=${snomedCode}`, {
+        return fetch(`${process.env.SERVER_URL}/fhir/CodeSystem/$lookup?system=${process.env.SYSTEM_URL}&code=${snomedCode}`, {
             headers: {
                 'Accept-Language': 'en-US'
             }
