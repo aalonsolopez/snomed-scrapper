@@ -1,5 +1,9 @@
+/**
+ * Designation model.
+ * @class Designation
+ */
 export default class Designation {
-    constructor(type, language, value) {
+    constructor(type = '', language = '', value = '') {
         this.type = type;
         this.language = language;
         this.value = value;
@@ -48,7 +52,7 @@ export default class Designation {
     /**
      * @param {string} value - The value of the Designation.
      * @returns {string} value
-    */
+     */
     setValue(value) {
         this.value = value;
     }

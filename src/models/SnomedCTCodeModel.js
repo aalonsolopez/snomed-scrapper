@@ -10,7 +10,7 @@ export default class SnomedCode {
      * @param {Designation[]} [designation=[]] - The designation of the SNOMED CT code.
      * @param {SnomedCode[]} [childs=[]] - The child codes of the SNOMED CT code.
      */
-    constructor(code, designation = '', childs = []) {
+    constructor(code, designation = [], childs = []) {
         this.code = code;
         this.designation = designation;
         this.childs = childs;
@@ -46,5 +46,21 @@ export default class SnomedCode {
      */
     appendChild(child) {
         this.childs.push(child);
+    }
+
+    /**
+     * Adds a designation to the Snomed Code.
+     * @param {Designation} designation
+     */
+    appendDesignation(designation) {
+        this.designation.push(designation);
+    }
+
+    /**
+     * Sets an array of designations to the Snomed Code.
+     * @param {Designation[]} designations - The code of the Snomed Code.
+     */
+    setDesignation(designations) {
+        this.designation = designations;
     }
 }

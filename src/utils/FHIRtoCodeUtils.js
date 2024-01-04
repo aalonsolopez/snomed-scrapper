@@ -1,4 +1,5 @@
 import NotValidFHIRResourceExc from '../errors/NotValidFHIRResourceExc';
+import Designation from '../models/Designation';
 import SnomedCode from '../models/SnomedCTCodeModel';
 
 /**
@@ -48,21 +49,33 @@ export default class FHIRtoCodeUtils {
     }
 
     static getDesignationFromFhirObject(snomedFhirObject) {
-        let designation = '';
+        const designations = [];
         snomedFhirObject.parameter.forEach((parameter) => {
             if (parameter.name === 'designation') {
+                const designation = new Designation();
                 parameter.part.forEach((part) => {
-                    if (part.name === 'value') {
-                        designation = part.valueString;
+                    switch (part.name) {
+                    case 'use':
+                        designation.setType(part.valueCode);
+                        break;
+                    case 'language':
+                        designation.setLanguage(part.valueCode);
+                        break;
+                    case 'value':
+                        designation.setValue(part.valueString);
+                        break;
+                    default:
+                        break;
                     }
                 });
+                designations.push(designation);
             }
         });
 
-        if (designation === '') {
-            throw new NotValidFHIRResourceExc('The FHIR Object does not have a designation.');
+        if (designations.length === 0) {
+            throw new NotValidFHIRResourceExc('The FHIR Object does not have designations.');
         } else {
-            return designation;
+            return designations;
         }
     }
 }
