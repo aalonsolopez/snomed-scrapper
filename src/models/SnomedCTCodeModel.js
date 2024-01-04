@@ -1,22 +1,49 @@
+/**
+ * Snomed Code Model
+ * @class SnomedCTCodeModel
+ */
 export default class SnomedCode {
-    constructor(code, meanings, childs) {
+    /**
+     * Creates an instance of SnomedCTCodeModel.
+     * @constructor
+     * @param {string} code - A valid SNOMED CT code.
+     * @param {Designation[]} [designation=[]] - The designation of the SNOMED CT code.
+     * @param {SnomedCode[]} [childs=[]] - The child codes of the SNOMED CT code.
+     */
+    constructor(code, designation = '', childs = []) {
         this.code = code;
-        this.meanings = meanings;
+        this.designation = designation;
         this.childs = childs;
     }
 
+    /**
+     * Returns the code of the Snomed Code.
+     * @returns {string} code
+     */
     getCode() {
         return this.code;
     }
 
-    getMeanings() {
+    /**
+     * Returns the designation of the Snomed Code.
+     * @returns {string} designation
+     */
+    getDesignation() {
         return this.meanings;
     }
 
+    /**
+     * Returns the childs of the Snomed Code.
+     * @returns {SnomedCode[]} childs
+     */
     getChilds() {
         return this.childs;
     }
 
+    /**
+     * Adds a child to the Snomed Code.
+     * @param {SnomedCode} child
+     */
     appendChild(child) {
         this.childs.push(child);
     }
