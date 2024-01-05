@@ -1,18 +1,42 @@
+// @ts-check
+
+// eslint-disable-next-line no-unused-vars
+import Designation from './Designation.js';
+
 /**
  * Snomed Code Model
  * @class SnomedCTCodeModel
  */
 export default class SnomedCode {
     /**
+     * A numeric string that uniquely identifies a concept within the terminology. Should be between 6 and 18 digits.
+     * @type {string}
+     */
+    code;
+
+    /**
+     * The differents designations of the SNOMED CT code.
+     * @type {Designation[]}
+     * @see {@link Designation}
+     */
+    designations;
+
+    /**
+     * The child codes of the SNOMED CT code.
+     * @type {SnomedCode[]}
+     */
+    childs;
+
+    /**
      * Creates an instance of SnomedCTCodeModel.
      * @constructor
      * @param {string} code - A valid SNOMED CT code.
-     * @param {Designation[]} [designation=[]] - The designation of the SNOMED CT code.
+     * @param {Designation[]} [designations=[]] - The designation of the SNOMED CT code.
      * @param {SnomedCode[]} [childs=[]] - The child codes of the SNOMED CT code.
      */
-    constructor(code, designation = [], childs = []) {
+    constructor(code, designations = [], childs = []) {
         this.code = code;
-        this.designation = designation;
+        this.designations = designations;
         this.childs = childs;
     }
 
@@ -34,10 +58,10 @@ export default class SnomedCode {
 
     /**
      * Returns the designation of the Snomed Code.
-     * @returns {string} designation
+     * @returns {Designation[]} designation
      */
     getDesignation() {
-        return this.meanings;
+        return this.designations;
     }
 
     /**
@@ -61,7 +85,7 @@ export default class SnomedCode {
      * @param {Designation} designation
      */
     appendDesignation(designation) {
-        this.designation.push(designation);
+        this.designations.push(designation);
     }
 
     /**
@@ -69,7 +93,7 @@ export default class SnomedCode {
      * @param {Designation[]} designations - The code of the Snomed Code.
      */
     setDesignation(designations) {
-        this.designation = designations;
+        this.designations = designations;
     }
 
     /**
