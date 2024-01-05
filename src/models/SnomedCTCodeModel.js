@@ -25,6 +25,14 @@ export default class SnomedCode {
     }
 
     /**
+     * Sets the code of the Snomed Code.
+     * @param {string} code - The code of the Snomed Code.
+     */
+    setCode(code) {
+        this.code = code;
+    }
+
+    /**
      * Returns the designation of the Snomed Code.
      * @returns {string} designation
      */

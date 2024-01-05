@@ -1,8 +1,11 @@
-import HTTPUtils from './utils/HTTPUtils';
+import HTTPUtils from './utils/HTTPUtils.js';
+import FHIRtoCodeUtils from './utils/FHIRtoCodeUtils.js';
 
 async function main() {
     const FhirResponse = await HTTPUtils.getSnomedCodeFhirFile('404684003');
-    console.log(FhirResponse);
+    const testCode = FHIRtoCodeUtils.fullFHIRToSnomedCode(FhirResponse);
+
+    console.log(testCode);
 }
 
 main();

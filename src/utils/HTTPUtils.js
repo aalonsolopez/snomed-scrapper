@@ -10,7 +10,7 @@ import 'dotenv/config';
 export default class HTTPUtils {
     /**
      * @param {string} snomedCode - A valid SNOMED CT code.
-     * @returns {Promise<Any>} responseJson - The full FHIR file for the given SNOMED CT code.
+     * @returns {Promise<Any>} The full FHIR file for the given SNOMED CT code.
      * @description
      * The fuction returns a Promise that resolves to the full FHIR file for the given SNOMED CT code.
     */

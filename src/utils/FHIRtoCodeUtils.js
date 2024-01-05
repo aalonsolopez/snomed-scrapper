@@ -1,6 +1,6 @@
-import NotValidFHIRResourceExc from '../errors/NotValidFHIRResourceExc';
-import Designation from '../models/Designation';
-import SnomedCode from '../models/SnomedCTCodeModel';
+import NotValidFHIRResourceExc from '../errors/NotValidFHIRResourceError.js';
+import Designation from '../models/Designation.js';
+import SnomedCode from '../models/SnomedCTCodeModel.js';
 
 /**
  * Class containing methods for converting FHIR Objects to SnomedCode Objects.
@@ -61,7 +61,7 @@ export default class FHIRtoCodeUtils {
                 parameter.part.forEach((part) => {
                     switch (part.name) {
                     case 'use':
-                        designation.setType(part.valueCode);
+                        designation.setType(part.valueCoding.display);
                         break;
                     case 'language':
                         designation.setLanguage(part.valueCode);
@@ -93,13 +93,10 @@ export default class FHIRtoCodeUtils {
         const childs = [];
         snomedFhirObject.parameter.forEach((parameter) => {
             if (parameter.name === 'property') {
-                const child = new SnomedCode();
-                parameter.part.forEach((part) => {
-                    if (part.name === 'code' && part.valueString === 'parent') {
-                        child.setCode(part.valueString);
-                    }
-                });
-                childs.push(child);
+                if (parameter.part[0].valueString === 'child') {
+                    const child = new SnomedCode(parameter.part[1].valueCode);
+                    childs.push(child);
+                }
             }
         });
 
