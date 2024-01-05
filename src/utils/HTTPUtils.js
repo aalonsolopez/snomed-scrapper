@@ -13,9 +13,6 @@ export default class HTTPUtils {
      * @returns {Promise<Any>} responseJson - The full FHIR file for the given SNOMED CT code.
      * @description
      * The fuction returns a Promise that resolves to the full FHIR file for the given SNOMED CT code.
-     * @example
-     * const FhirResponse = await HTTPUtils.getSnomedCodeFhirFile('404684003');
-     * console.log(FhirResponse);
     */
     static getSnomedCodeFhirFile(snomedCode) {
         return fetch(`${process.env.SERVER_URL}/fhir/CodeSystem/$lookup?system=${process.env.SYSTEM_URL}&code=${snomedCode}`, {

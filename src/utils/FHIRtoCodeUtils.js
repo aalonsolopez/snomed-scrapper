@@ -20,7 +20,7 @@ export default class FHIRtoCodeUtils {
         const snomedCode = new SnomedCode(
             FHIRtoCodeUtils.getCodeFromFhirObject(snomedFhirObject),
             FHIRtoCodeUtils.getDesignationFromFhirObject(snomedFhirObject),
-            [], // FHIRtoCodeUtils.getChildsFromFhirObject(snomedFhirObject) TO-DO
+            FHIRtoCodeUtils.getChildsFromFhirObject(snomedFhirObject),
         );
 
         return snomedCode;
@@ -48,6 +48,11 @@ export default class FHIRtoCodeUtils {
         }
     }
 
+    /**
+     * Function that returns all the designations from a FHIR Object.
+     * @param {Object} snomedFhirObject - A valid FHIR Object.
+     * @returns {Designation[]} designations
+    */
     static getDesignationFromFhirObject(snomedFhirObject) {
         const designations = [];
         snomedFhirObject.parameter.forEach((parameter) => {
@@ -77,5 +82,27 @@ export default class FHIRtoCodeUtils {
         } else {
             return designations;
         }
+    }
+
+    /**
+     * Function that returns all the childs from a FHIR Object.
+     * @param {Object} snomedFhirObject - A valid FHIR Object.
+     * @returns {SnomedCode[]} childs
+     */
+    static getChildsFromFhirObject(snomedFhirObject) {
+        const childs = [];
+        snomedFhirObject.parameter.forEach((parameter) => {
+            if (parameter.name === 'property') {
+                const child = new SnomedCode();
+                parameter.part.forEach((part) => {
+                    if (part.name === 'code' && part.valueString === 'parent') {
+                        child.setCode(part.valueString);
+                    }
+                });
+                childs.push(child);
+            }
+        });
+
+        return childs;
     }
 }

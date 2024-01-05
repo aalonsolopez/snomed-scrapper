@@ -63,4 +63,12 @@ export default class SnomedCode {
     setDesignation(designations) {
         this.designation = designations;
     }
+
+    /**
+     * Returns true if the Snomed Code has childs.
+     * @returns {boolean} hasChilds
+     */
+    hasChilds() {
+        return this.childs.length > 0;
+    }
 }
