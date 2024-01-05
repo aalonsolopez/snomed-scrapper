@@ -12,6 +12,6 @@
         "indent": ["error", 4],
         "no-console": "off",
         "max-len": "off",
-        "import/extensions": "always"
+        "import/extensions": "off"
     }
 }
