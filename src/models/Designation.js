@@ -51,7 +51,6 @@ export default class Designation {
 
     /**
      * @param {string} value - The value of the Designation.
-     * @returns {string} value
      */
     setValue(value) {
         this.value = value;

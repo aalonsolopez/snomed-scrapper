@@ -4,8 +4,8 @@
 import Designation from './Designation.js';
 
 /**
- * Snomed Code Model
- * @class SnomedCTCodeModel
+ * Snomed Code model.
+ * @class SnomedCode
  */
 export default class SnomedCode {
     /**
@@ -29,7 +29,7 @@ export default class SnomedCode {
 
     /**
      * Creates an instance of SnomedCTCodeModel.
-     * @constructor
+     * @class
      * @param {string} code - A valid SNOMED CT code.
      * @param {Designation[]} [designations=[]] - The designation of the SNOMED CT code.
      * @param {SnomedCode[]} [childs=[]] - The child codes of the SNOMED CT code.
@@ -74,7 +74,7 @@ export default class SnomedCode {
 
     /**
      * Adds a child to the Snomed Code.
-     * @param {SnomedCode} child
+     * @param {SnomedCode} child - Snomed Code which is a child of another Snomed Code.
      */
     appendChild(child) {
         this.childs.push(child);
@@ -82,7 +82,7 @@ export default class SnomedCode {
 
     /**
      * Adds a designation to the Snomed Code.
-     * @param {Designation} designation
+     * @param {Designation} designation - The designation of the Snomed Code.
      */
     appendDesignation(designation) {
         this.designations.push(designation);

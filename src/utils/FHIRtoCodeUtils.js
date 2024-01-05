@@ -4,16 +4,13 @@ import SnomedCode from '../models/SnomedCTCodeModel.js';
 
 /**
  * Class containing methods for converting FHIR Objects to SnomedCode Objects.
- *
- * @export
  * @class FHIRtoCodeUtils
  * @typedef {FHIRtoCodeUtils}
  */
 export default class FHIRtoCodeUtils {
     /**
      * From a FHIR Object, returns a SnomedCode Object.
-     *
-     * @param {Object} snomedFhirObject - A valid FHIR Object.
+     * @param {object} snomedFhirObject - A valid FHIR Object.
      * @returns {SnomedCode} SnomedCode
      */
     static fullFHIRToSnomedCode(snomedFhirObject) {
@@ -28,7 +25,7 @@ export default class FHIRtoCodeUtils {
 
     /**
      * Function that returns the code from a FHIR Object.
-     * @param {Object} snomedFhirObject - A valid FHIR Object.
+     * @param {object} snomedFhirObject - A valid FHIR Object.
      * @returns {string} code
      */
     static getCodeFromFhirObject(snomedFhirObject) {
@@ -50,9 +47,9 @@ export default class FHIRtoCodeUtils {
 
     /**
      * Function that returns all the designations from a FHIR Object.
-     * @param {Object} snomedFhirObject - A valid FHIR Object.
+     * @param {object} snomedFhirObject - A valid FHIR Object.
      * @returns {Designation[]} designations
-    */
+     */
     static getDesignationFromFhirObject(snomedFhirObject) {
         const designations = [];
         snomedFhirObject.parameter.forEach((parameter) => {
@@ -86,7 +83,7 @@ export default class FHIRtoCodeUtils {
 
     /**
      * Function that returns all the childs from a FHIR Object.
-     * @param {Object} snomedFhirObject - A valid FHIR Object.
+     * @param {object} snomedFhirObject - A valid FHIR Object.
      * @returns {SnomedCode[]} childs
      */
     static getChildsFromFhirObject(snomedFhirObject) {
