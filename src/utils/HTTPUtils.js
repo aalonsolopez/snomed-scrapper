@@ -7,7 +7,7 @@ import 'dotenv/config';
 export default class HTTPUtils {
     /**
      * @param {string} snomedCode - A valid SNOMED CT code.
-     * @returns {Promise<object>} The full FHIR file for the given SNOMED CT code.
+     * @returns {Promise<object>}
      * @description
      * The fuction returns a Promise that resolves to the full FHIR file for the given SNOMED CT code.
      */
