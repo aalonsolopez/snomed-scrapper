@@ -3,7 +3,6 @@ import 'dotenv/config';
 /**
  * Class containing methods for making HTTP requests related to FHIR.
  * @class HTTPUtils
- * @typedef {HTTPUtils}
  */
 export default class HTTPUtils {
     /**

@@ -5,7 +5,6 @@ import SnomedCode from '../models/SnomedCTCodeModel.js';
 /**
  * Class containing methods for converting FHIR Objects to SnomedCode Objects.
  * @class FHIRtoCodeUtils
- * @typedef {FHIRtoCodeUtils}
  */
 export default class FHIRtoCodeUtils {
     /**
