@@ -1,7 +1,7 @@
 /**
  * Indicates that the resource is not a valid FHIR resource
  * @class NotValidFHIRResourceError
- * @extends {Error}
+ * @augments {Error}
  */
 export default class NotValidFHIRResourceError extends Error {
     /**

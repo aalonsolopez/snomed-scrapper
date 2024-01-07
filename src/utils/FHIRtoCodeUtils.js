@@ -10,7 +10,7 @@ export default class FHIRtoCodeUtils {
     /**
      * From a FHIR Object, returns a SnomedCode Object.
      * @param {object} snomedFhirObject - A valid FHIR Object.
-     * @returns {SnomedCode}
+     * @returns {SnomedCode} - A SnomedCode Object.
      */
     static fullFHIRToSnomedCode(snomedFhirObject) {
         const snomedCode = new SnomedCode(
@@ -25,7 +25,7 @@ export default class FHIRtoCodeUtils {
     /**
      * Function that returns the code from a FHIR Object.
      * @param {object} snomedFhirObject - A valid FHIR Object.
-     * @returns {string}
+     * @returns {string} - A valid SNOMED CT code.
      */
     static getCodeFromFhirObject(snomedFhirObject) {
         let code = '';
@@ -47,7 +47,7 @@ export default class FHIRtoCodeUtils {
     /**
      * Function that returns all the designations from a FHIR Object.
      * @param {object} snomedFhirObject - A valid FHIR Object.
-     * @returns {Designation[]}
+     * @returns {Designation[]} - An array of Designation Objects.
      */
     static getDesignationFromFhirObject(snomedFhirObject) {
         const designations = [];
@@ -83,7 +83,7 @@ export default class FHIRtoCodeUtils {
     /**
      * Function that returns all the childs from a FHIR Object.
      * @param {object} snomedFhirObject - A valid FHIR Object.
-     * @returns {SnomedCode[]}
+     * @returns {SnomedCode[]} - An array of SnomedCode Objects.
      */
     static getChildsFromFhirObject(snomedFhirObject) {
         const childs = [];
